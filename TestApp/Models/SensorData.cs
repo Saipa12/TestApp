@@ -1,11 +1,10 @@
-﻿using System;
-
-namespace TestApp.Models
+﻿namespace TestApp.Models
 {
 	public class SensorData
 	{
-		public DateTime Timestamp { get; set; }
-		public double Value { get; set; }
+		public string? Serial { get; set; }
+
+		public PacketData Packet { get; set; }
 		// Добавьте другие поля, если они есть в JSON
 	}
 }

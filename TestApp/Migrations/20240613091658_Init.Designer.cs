@@ -11,7 +11,7 @@ using TestApp.Data;
 namespace TestApp.Migrations
 {
     [DbContext(typeof(SensorDataContext))]
-    [Migration("20240612223117_Init")]
+    [Migration("20240613091658_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

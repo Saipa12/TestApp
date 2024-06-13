@@ -4,11 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls" xmlns:local="using:TestApp.ViewModels"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls" xmlns:viewmodels="using:TestApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SensorDataViewModel}"
     mc:Ignorable="d">
-    <Page.DataContext>
-        <local:SensorDataViewModel />
-    </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,20 +17,18 @@
             <Button Content="Export to CSV" Click="ExportToCsv_Click" Margin="5" />
         </StackPanel>
 
-        <Grid>
-            <controls:DataGrid ItemsSource="{Binding SensorData}" AutoGenerateColumns="False">
-                <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Header="Serial" Binding="{Binding Serial}" />
-                    <controls:DataGridTextColumn Header="Datetime" Binding="{Binding Packet.Datetime}" />
-                    <controls:DataGridTextColumn Header="EnvTemperature" Binding="{Binding Packet.EnvTemperature}" />
-                    <controls:DataGridTextColumn Header="Humidity" Binding="{Binding Packet.Humidity}" />
-                    <controls:DataGridTextColumn Header="DewPoint" Binding="{Binding Packet.DewPoint}" />
-                    <controls:DataGridTextColumn Header="Pressure_hPa" Binding="{Binding Packet.Pressure_hPa}" />
-                    <controls:DataGridTextColumn Header="Pressure_mm_hg" Binding="{Binding Packet.Pressure_mm_hg}" />
-                    <controls:DataGridTextColumn Header="WindSpeed" Binding="{Binding Packet.WindSpeed}" />
-                    <controls:DataGridTextColumn Header="WindDirection" Binding="{Binding Packet.WindDirection}" />
-                </controls:DataGrid.Columns>
-            </controls:DataGrid>
-        </Grid>
+        <controls:DataGrid x:Name="SensorDataGrid" AutoGenerateColumns="False" Grid.Row="1">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="Serial" Binding="{Binding Serial}" />
+                <controls:DataGridTextColumn Header="Datetime" Binding="{Binding Packet.Datetime}" />
+                <controls:DataGridTextColumn Header="EnvTemperature" Binding="{Binding Packet.EnvTemperature}" />
+                <controls:DataGridTextColumn Header="Humidity" Binding="{Binding Packet.Humidity}" />
+                <controls:DataGridTextColumn Header="DewPoint" Binding="{Binding Packet.DewPoint}" />
+                <controls:DataGridTextColumn Header="Pressure_hPa" Binding="{Binding Packet.Pressure_hPa}" />
+                <controls:DataGridTextColumn Header="Pressure_mm_hg" Binding="{Binding Packet.Pressure_mm_hg}" />
+                <controls:DataGridTextColumn Header="WindSpeed" Binding="{Binding Packet.WindSpeed}" />
+                <controls:DataGridTextColumn Header="WindDirection" Binding="{Binding Packet.WindDirection}" />
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
     </Grid>
 </Page>

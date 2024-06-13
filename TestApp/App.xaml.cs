@@ -18,16 +18,17 @@ namespace TestApp
 		{
 			string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			string databasePath = Path.Combine(folderPath, "sensor_data.db");
-			string connectionString = $"Data Source={databasePath}";
+			string connectionString = $"Data Source=C:\\Users\\Saipa\\Downloads\\SensorData.db";
+			//string connectionString = $"Data Source={databasePath}";
 
-			if (!File.Exists(databasePath))
+			//if (!File.Exists(databasePath))
+			//{
+			using (var context = new SensorDataContext(connectionString))
 			{
-				using (var context = new SensorDataContext(connectionString))
-				{
-					// Применение миграций только если база данных не существует
-					context.Database.Migrate();
-				}
+				// Применение миграций только если база данных не существует
+				context.Database.Migrate();
 			}
+			//}
 		}
 
 		protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
